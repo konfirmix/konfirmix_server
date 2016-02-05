@@ -1,17 +1,17 @@
 {
-  "name": "konfirmix.js",
+  "name": "konfirmix",
   "description": "Terminal to connect to devices from tab using SSH",
-  "version": "0.2.13",
+  "version": "1.3.10",
   "main": "./index.js",
   "bin": {
-    "tty.js": "./bin/konformix.js"
+    "tty.js": "./bin/konfirmix.js"
   },
   "preferGlobal": false,
   "repository": {
     "type": "git",
-    "url": "git://github.com/chjj/tty.js.git"
+    "url": "git://github.com/konfirmix/konfirmix_server.git"
   },
-  "homepage": "https://github.com/chjj/tty.js",
+  "homepage": "https://github.com/konfirmix/konfirmix_server/tree/master/Konfirmix",
   "dependencies": {
     "express": "3.1.0",
     "socket.io": "0.9.13",
@@ -20,5 +20,6 @@
   },
   "engines": {
     "node": ">= 0.10.25"
-  }
+  },
+  "_npmVersion": "1.2.14"
 }
