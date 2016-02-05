@@ -1,0 +1,74 @@
+function convertToKenoPanel1(testCases){
+	this.list = testCases;
+	this.resList = [];
+	this.assortItems(this.list);
+	//console.log(testCases);
+}
+
+/*[{"estimate_forecast": null, "title": "t1testcase", "custom_steps_separated": null,
+ "project_id": 20, "id": 525, "updated_by": 1, "priority_id": 2, "milestone_id": null,
+ "estimate": null, "created_on": 1441867506, "custom_version": null, "suite_id": 30,
+ "created_by": 1, "custom_automated": false, "custom_comments": null, "custom_script_name": null,
+ "updated_on": 1441867506, "type_id": 3, "custom_recording": null, "section_id": 80, 
+ "custom_test_result": null, "refs": null, "custom_preconditions": null}, {"estimate_forecast": null, "title": "t1t2", "custom_steps_separated": null, "project_id": 20, "id": 529, "updated_by": 1, "priority_id": 2, "milestone_id": null, "estimate": null, "created_on": 1441867631, "custom_version": null, "suite_id": 30, "created_by": 1, "custom_automated": false, "custom_comments": null, "custom_script_name": null, "updated_on": 1441867631, "type_id": 3, "custom_recording": null, "section_id": 80, "custom_test_result": null, "refs": null, "custom_preconditions": null}, {"estimate_forecast": null, "title": "t1t3", "custom_steps_separated": null, "project_id": 20, "id": 530, "updated_by": 1, "priority_id": 2, "milestone_id": null, "estimate": null, "created_on": 1441867633, "custom_version": null, "suite_id": 30, "created_by": 1, "custom_automated": false, "custom_comments": null, "custom_script_name": null, "updated_on": 1441867633, "type_id": 3, "custom_recording": null, "section_id": 80, "custom_test_result": null, "refs": null, "custom_preconditions": null}, {"estimate_forecast": null, "title": "t2testcase1", "custom_steps_separated": null, "project_id": 21, "id": 526, "updated_by": 1, "priority_id": 2, "milestone_id": null, "estimate": null, "created_on": 1441867608, "custom_version": null, "suite_id": 31, "created_by": 1, "custom_automated": false, "custom_comments": null, "custom_script_name": null, "updated_on": 1441867608, "type_id": 3, "custom_recording": null, "section_id": 81, "custom_test_result": null, "refs": null, "custom_preconditions": null}, {"estimate_forecast": null, "title": "t2t2", "custom_steps_separated": null, "project_id": 21, "id": 527, "updated_by": 1, "priority_id": 2, "milestone_id": null, "estimate": null, "created_on": 1441867613, "custom_version": null, "suite_id": 31, "created_by": 1, "custom_automated": false, "custom_comments": null, "custom_script_name": null, "updated_on": 1441867613, "type_id": 3, "custom_recording": null, "section_id": 81, "custom_test_result": null, "refs": null, "custom_preconditions": null}, {"estimate_forecast": null, "title": "t2t3", "custom_steps_separated": null, "project_id": 21, "id": 528, "updated_by": 1, "priority_id": 2, "milestone_id": null, "estimate": null, "created_on": 1441867616, "custom_version": null, "suite_id": 31, "created_by": 1, "custom_automated": false, "custom_comments": null, "custom_script_name": null, "updated_on": 1441867616, "type_id": 3, "custom_recording": null, "section_id": 81, "custom_test_result": null, "refs": null, "custom_preconditions": null}]*/
+
+convertToKenoPanel.prototype.assortItems1 = function(list){
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+function convertToKenoPanel(testCases){
+	this.list = testCases;
+	this.resList = [];
+	this.assortItems(this.list);
+	//console.log(testCases);
+}
+convertToKenoPanel.prototype.assortItems = function(list){
+	for(this.i=0;this.i<list.length;this.i++){
+		this.projectIndex =this.getIndex(this.resList,'id',list[this.i].project_id);
+		
+		if(this.projectIndex == null){
+			this.resList.push({"text":list[this.i].project_name,"id":list[this.i].project_id,"items":[]});
+			this.projectIndex  = this.resList.length-1;
+		}
+		this.suiteIndex =this.getIndex(this.resList[this.projectIndex].items,'id',list[this.i].suite_id);
+		if(this.suiteIndex == null){
+			this.resList[this.projectIndex].items.push({"text":list[this.i].suite_name,"id":list[this.i].suite_id,"items":[]});
+			this.suiteIndex = this.resList[this.projectIndex].items.length-1;
+		}
+		this.sectionIndex =this.getIndex(this.resList[this.projectIndex].items[this.suiteIndex].items,'id',list[this.i].section_id);
+		if(this.sectionIndex == null){
+			 this.resList[this.projectIndex].items[this.suiteIndex].items.push({"text":list[this.i].section_name,"id":list[this.i].section_id,"items":[]});
+			 this.sectionIndex  = this.resList[this.projectIndex].items[this.suiteIndex].items.length-1;
+		}
+		this.resList[this.projectIndex].items[this.suiteIndex].items[this.sectionIndex].items.push({"text":list[this.i].title,"id":list[this.i].id});
+	} 
+	
+}
+
+
+convertToKenoPanel.prototype.getIndex = function(list,field,value){	
+	for(this.l=0;this.l<list.length;this.l++){
+		if(list[this.l][field] == value){
+			return this.l;	
+		}
+	}
+	return null;
+}
+
+
+
+
+
